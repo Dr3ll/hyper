@@ -4,7 +4,7 @@
   "repository": "zeit/hyper",
   "scripts": {
     "start": "echo 'please run `yarn run dev` in one tab and then `yarn run app` in another one'",
-    "app": "electron target",
+    "app": "node ./killDevtools & electron target",
     "dev": "concurrently -n \"Webpack,TypeScript Compiler\" -c \"cyan.bold,blue.bold\" \"webpack -w\" \"tsc --pretty --watch --preserveWatchOutput\" -k",
     "build": "cross-env NODE_ENV=production webpack && tsc",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
