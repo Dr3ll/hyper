@@ -4,7 +4,8 @@
   "repository": "zeit/hyper",
   "scripts": {
     "start": "echo 'please run `yarn run dev` in one tab and then `yarn run app` in another one'",
-    "app": "node ./killDevtools & electron target",
+    "plugin": "./node_modules/.bin/babel .hyper_plugins/local/src --out-dir ./.hyper_plugins/local/lib",
+    "app": "node ./killDevtools & npm run plugin & electron target",
     "dev": "concurrently -n \"Webpack,TypeScript Compiler\" -c \"cyan.bold,blue.bold\" \"webpack -w\" \"tsc --pretty --watch --preserveWatchOutput\" -k",
     "build": "cross-env NODE_ENV=production webpack && tsc",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -244,6 +245,8 @@
     "email": "team@zeit.co"
   },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "7.7.4",
+    "@babel/preset-env": "7.7.6",
     "args": "5.0.1",
     "chalk": "3.0.0",
     "color": "3.1.2",
